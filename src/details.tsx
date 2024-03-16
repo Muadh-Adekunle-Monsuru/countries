@@ -1,9 +1,33 @@
 import { useState, useEffect } from 'react';
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline';
 import { Link, useParams } from 'react-router-dom';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+	'https://lnuzzckynzfmxyxkfgbz.supabase.co',
+	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxudXp6Y2t5bnpmbXh5eGtmZ2J6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTAxMDIwNDMsImV4cCI6MjAyNTY3ODA0M30.19fLtRhfa-TBMMXX0BeTWGgTE60Ju2mYFvEpxvjnxbw'
+);
+
 export default function FullDescription() {
+	const [countries, setCountries] = useState([]);
+
+	async function getCountries(code) {
+		const { data } = await supabase
+			.from('countries')
+			.select('name,alpha3Code,row_index')
+			.eq('alpha3Code', code);
+		setCountries((prevState) => [...prevState, data]);
+		console.log(data);
+	}
+	function getCountry() {
+		try {
+			data.borders.map((item) => getCountries(item));
+		} catch (e) {
+			console.log('error');
+		}
+	}
 	let { countryID } = useParams();
-	const arrynum = Number(countryID);
+	const arrynum = Number(countryID) - 1;
 	const [data, setData] = useState({
 		name: '',
 		nativeName: '',
@@ -36,7 +60,7 @@ export default function FullDescription() {
 					error
 				)
 			);
-		console.log(data);
+		getCountry();
 	}, []);
 
 	return (
@@ -110,13 +134,13 @@ export default function FullDescription() {
 						<div className='py-10 lg:flex items-center sm:grid '>
 							<span className='font-semibold text-xl'>Border Countries: </span>
 							<div className='sm:grid sm:grid-cols-3 md:flex'>
-								{data.borders
-									? data.borders.map((item, index) => (
+								{countries
+									? countries.map((item) => (
 											<span
-												key={index}
+												key={item.row_index}
 												className='border p-1 m-2 px-5 shadow-sm'
 											>
-												{item}{' '}
+												{item.name}
 											</span>
 									  ))
 									: null}
