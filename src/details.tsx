@@ -63,7 +63,7 @@ export default function FullDescription() {
 
 	return (
 		<>
-			<div className='w-full h-fit sm:py-7 md:py-20 '>
+			<div className='w-full h-fit sm:py-7 md:py-20 dark:text-white'>
 				<Link to={`/`}>
 					<div className='flex w-fit p-2 border-2 sm:ml-5 lg:ml-40 px-7 shadow-md cursor-pointer space-x-5 '>
 						<ArrowLongLeftIcon className='h-6 w-6' />
