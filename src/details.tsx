@@ -10,7 +10,7 @@ const supabase = createClient(
 
 export default function FullDescription() {
 	const [countries, setCountries] = useState([]);
-
+	console.log(countries);
 	async function getCountries(code) {
 		const { data } = await supabase
 			.from('countries')
@@ -39,7 +39,7 @@ export default function FullDescription() {
 		languages: [],
 		borders: [],
 		flags: {
-			png: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_the_Taliban.svg/320px-Flag_of_the_Taliban.svg.png',
+			png: 'https://knetic.org.uk/wp-content/uploads/2020/07/Pcture-Placeholder-1024x684.png',
 		},
 	});
 	useEffect(() => {
