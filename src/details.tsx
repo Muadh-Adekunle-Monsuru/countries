@@ -15,9 +15,8 @@ export default function FullDescription() {
 		const { data } = await supabase
 			.from('countries')
 			.select('name,alpha3Code,row_index')
-			.eq('alpha3Code', code);
+			.eq('alpha3Code', `${code}`);
 		setCountries((prevState) => [...prevState, data]);
-		console.log(data);
 	}
 	function getCountry() {
 		try {
@@ -45,7 +44,6 @@ export default function FullDescription() {
 	});
 	useEffect(() => {
 		// If you're using Create React App and the file is in the public folder
-		console.log(countryID);
 		fetch('/data.json')
 			.then((response) => {
 				if (!response.ok) {
@@ -134,13 +132,13 @@ export default function FullDescription() {
 						<div className='py-10 lg:flex items-center sm:grid '>
 							<span className='font-semibold text-xl'>Border Countries: </span>
 							<div className='sm:grid sm:grid-cols-3 md:flex'>
-								{countries
-									? countries.map((item) => (
+								{data.borders
+									? data.borders.map((item) => (
 											<span
-												key={item.row_index}
+												key={item}
 												className='border p-1 m-2 px-5 shadow-sm'
 											>
-												{item.name}
+												{item}
 											</span>
 									  ))
 									: null}

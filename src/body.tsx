@@ -96,7 +96,7 @@ export default function Body() {
 
 			{/* content */}
 
-			<div className='h-screen w-full grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-20 pt-20  justify-items-center md:justify-items-stretch'>
+			<div className='h-screen w-full grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-20 pt-20   md:justify-items-stretch'>
 				{countries
 					? countries.map((item, index) => (
 							<div
