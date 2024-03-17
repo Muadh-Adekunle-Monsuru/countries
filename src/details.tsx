@@ -1,22 +1,18 @@
 import { useState, useEffect } from 'react';
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline';
 import { Link, useParams } from 'react-router-dom';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-	'https://lnuzzckynzfmxyxkfgbz.supabase.co',
-	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxudXp6Y2t5bnpmbXh5eGtmZ2J6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTAxMDIwNDMsImV4cCI6MjAyNTY3ODA0M30.19fLtRhfa-TBMMXX0BeTWGgTE60Ju2mYFvEpxvjnxbw'
-);
-
+// import supabase from './supabase';
 export default function FullDescription() {
-	const [countries, setCountries] = useState([]);
-	console.log(countries);
+	// const [countries, setCountries] = useState([]);
 	async function getCountries(code) {
-		const { data } = await supabase
-			.from('countries')
-			.select('name,alpha3Code,row_index')
-			.eq('alpha3Code', `${code}`);
-		setCountries((prevState) => [...prevState, data]);
+		console.log(code);
+		// const { data } = await supabase
+		// 	.from('countries')
+		// 	.select('name,alpha3Code,row_index')
+		// 	.eq('alpha3Code', `${code}`);
+		// setCountries((prevState) => [...prevState, data]);
+		// console.log(data);
+		// console.log(countries);
 	}
 	function getCountry() {
 		try {

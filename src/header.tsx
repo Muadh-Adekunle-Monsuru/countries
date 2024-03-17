@@ -41,12 +41,18 @@ export default function Header() {
 			setTheme(<DarkText />);
 		}
 	}
+	function refreshPage() {
+		window.location.reload();
+	}
 	return (
 		<>
 			<div className='bg-white dark:bg-darkBlue w-full p-2 shadow-md'>
 				<div className='w-full'>
 					<div className='flex flex-row w-full justify-between items-center md:px-20 '>
-						<h1 className='text-xl font-bold  dark:text-white'>
+						<h1
+							className='text-xl font-bold  dark:text-white cursor-pointer'
+							onClick={refreshPage}
+						>
 							Where in the world?
 						</h1>
 						<div onClick={handleClick} className='p-3 cursor-pointer'>
